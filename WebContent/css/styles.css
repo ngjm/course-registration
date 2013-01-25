@@ -1,0 +1,22 @@
+body {
+	font-family: arial;
+}
+.formBody {
+	width: 600px; 
+	margin: 0 auto;
+	padding: 10px; 
+}
+
+div#title {
+	text-align: center;
+}
+
+fieldset {
+	margin-bottom: 25px;
+}
+
+#submitButton {
+	margin: 0 auto 0 auto;
+	text-align: center;
+}
+

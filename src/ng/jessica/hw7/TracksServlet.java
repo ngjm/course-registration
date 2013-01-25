@@ -135,72 +135,57 @@ public class TracksServlet extends HttpServlet {
 
 		String url = "";
 		if (error) {
-			url = "/hw7/tracks.jsp";
+			url = "/index.jsp";
 		} else if (action != null && action.equals("CONFIRM")) {
-			url = "/hw7/payment.jsp";
+			url = "/payment.jsp";
 		} else if (action != null && action.equals("EMAIL")) {
 			/*
-			int courseCost = 0;
-			int total = 0;
-			int hotelFee = 185;
-			int parkingFee = 10;
-
-			if (user.getStatus() != null) {
-				if (user.getStatus().equals("JHU Employee")) {
-					courseCost = 850;
-				} else if (user.getStatus().equals("JHU Student")) {
-					courseCost = 1000;
-				} else if (user.getStatus().equals("Speaker")) {
-					courseCost = 0;
-				} else {
-					courseCost = 1350;
-				}
-			}
-
-			String to = user.getEmail();
-			String from = "noreply@jhu.edu";
-			String subject = "Annual JHU Software Development Seminar Registration Confirmation";
-			String body = user.getName()
-					+ ", <br />"
-					+ "Thank you for registering your participation in the Annual Johns Hopkins "
-					+ "Software Development Seminar. Below is your registration information: <br /> <table>";
-			int numOfCourses = user.getCourses().size();
-			for (int i = 0; i < numOfCourses; i++) {
-				body += "<tr><td>" + user.getCourses().get(i) + "</td><td>$"
-						+ courseCost + ".00</td></tr>";
-			}
-			total = numOfCourses * courseCost;
-			if (user.getHotel() != null) {
-				body += "<tr><td>Hotel Accommodation</td><td>$" + hotelFee
-						+ ".00</td></tr>";
-				total += hotelFee;
-			}
-
-			if (user.getParking() != null) {
-				body += "<tr><td>Parking Permit</td><td>$" + parkingFee
-						+ ".00</td></tr>";
-				total += parkingFee;
-			}
-			body += "<tr><td align=right>Total</td><td>" + total
-					+ ".00</td></tr></table><br />";
-			body += "Thank you.";
-			boolean isBodyHTML = true;
-
-			try {
-				MailUtilLocal.sendMail(to, from, subject, body, isBodyHTML);
-			} catch (MessagingException e) {
-				errorMsgSendEmail = "Unable to send confirmation e-mail at this time. Please try again later.";
-			}
-			*/
-			url = "/hw7/confirmation.jsp";
+			 * int courseCost = 0; int total = 0; int hotelFee = 185; int
+			 * parkingFee = 10;
+			 * 
+			 * if (user.getStatus() != null) { if
+			 * (user.getStatus().equals("JHU Employee")) { courseCost = 850; }
+			 * else if (user.getStatus().equals("JHU Student")) { courseCost =
+			 * 1000; } else if (user.getStatus().equals("Speaker")) { courseCost
+			 * = 0; } else { courseCost = 1350; } }
+			 * 
+			 * String to = user.getEmail(); String from = "noreply@jhu.edu";
+			 * String subject =
+			 * "Annual JHU Software Development Seminar Registration Confirmation"
+			 * ; String body = user.getName() + ", <br />" +
+			 * "Thank you for registering your participation in the Annual Johns Hopkins "
+			 * +
+			 * "Software Development Seminar. Below is your registration information: <br /> <table>"
+			 * ; int numOfCourses = user.getCourses().size(); for (int i = 0; i
+			 * < numOfCourses; i++) { body += "<tr><td>" +
+			 * user.getCourses().get(i) + "</td><td>$" + courseCost +
+			 * ".00</td></tr>"; } total = numOfCourses * courseCost; if
+			 * (user.getHotel() != null) { body +=
+			 * "<tr><td>Hotel Accommodation</td><td>$" + hotelFee +
+			 * ".00</td></tr>"; total += hotelFee; }
+			 * 
+			 * if (user.getParking() != null) { body +=
+			 * "<tr><td>Parking Permit</td><td>$" + parkingFee +
+			 * ".00</td></tr>"; total += parkingFee; } body +=
+			 * "<tr><td align=right>Total</td><td>" + total +
+			 * ".00</td></tr></table><br />"; body += "Thank you."; boolean
+			 * isBodyHTML = true;
+			 * 
+			 * try { MailUtilLocal.sendMail(to, from, subject, body,
+			 * isBodyHTML); } catch (MessagingException e) { errorMsgSendEmail =
+			 * "Unable to send confirmation e-mail at this time. Please try again later."
+			 * ; }
+			 */
+			
+			url = "/confirmation.jsp";
 		} else if (action != null && action.equals("DELETE")) {
-			url = "/hw7/results.jsp";
+			url = "/results.jsp";
 		} else if (action != null && action.equals("ADD")) {
-			url = "/hw7/courses.jsp";
+			url = "/courses.jsp";
 		} else if (areDuplicates) {
-			url = "/hw7/courses.jsp";
+			url = "/courses.jsp";
 		} else {
-			url = "/hw7/results.jsp";
+			url = "/results.jsp";
 		}
 
 		session.setAttribute("msgName", errorMsgName);
