@@ -3,16 +3,18 @@
 <%@page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>HW 7</title>
-</head>
+	<head>
+		<title>Review Selections</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	</head>
+	
 <body>
 	<%@ page import="ng.jessica.hw7.User"%>
 	<%@ page import="java.util.ArrayList"%>
 
-	<h1>JOHNS HOPKINS ANNUAL SOFTWARE DEVELOPMENT SEMINAR</h1>
-	<br />
+<div class="formBody">
+	<div id="title"><h2>ANNUAL SOFTWARE DEVELOPMENT SEMINAR</h2></div>
 
 	<%
 		User user = (User) session.getAttribute("user");
@@ -42,7 +44,7 @@
 	<font style="font-weight: bold"><%=user.getStatus()%></font>.
 	<br />
 	<br /> Your confirmation will be sent to:
-	<font style="font-weight: bold"><%=user.getEmail()%></font>
+	<font style="font-weight: bold"><a href="mailto:<%=user.getEmail()%>"><%=user.getEmail()%></a></font>
 
 
 	<%
@@ -61,14 +63,15 @@
 
 	<br />
 	<br />
-
-	<table colspan="3" border="0" width="70%">
+	<div id="summary">
+	<table colspan="4" border="0" width="85%">
 
 		<tr>
 			<td align="center"><font style="font-weight: bold">Your
 					Courses</font></td>
 			<td />
 			<td align="center"><font style="font-weight: bold">Cost</font></td>
+			<td />
 		</tr>
 
 		<%
@@ -81,7 +84,7 @@
 			<td>$ <%=courseCost%>.00
 			</td>
 			<td>
-				<form name="deleteCourse" action="/hw7/TracksServlet" method="POST">			
+				<form name="deleteCourse" action="/registration/TracksServlet" method="POST">			
 					<input type="hidden" name="action" value="DELETE" />
 					<input type="hidden" name="indexToRemove" value="<%= i %>" />
 					<input type="hidden" name="name" value="<%= user.getName()  %>" />
@@ -128,32 +131,40 @@
 
 		<tr>
 			<td />
-			<td><font style="font-weight: bold">Total</font></td>
-			<td>$ <%=total%>.00
+			<td id="totalLabel"><font style="font-weight: bold">TOTAL</font></td>
+			<td id="totalAmount">$ <%=total%>.00
 			</td>
 		</tr>
 	</table>
+	</div>
 	
-
+	<div class="submitButtons">
+	
+	<div class="button">
 	<input type="button" value="Edit Information" />
+	</div>
 	
-	<form name="addCourses" action="/hw7/TracksServlet" method="POST">
+		<div class="button">
+	<form name="addCourses" action="/registration/TracksServlet" method="POST">
 		<input type="submit" value="Add More Courses" />
 		<input type="hidden" name="action" value="ADD">
 		<input type="hidden" name="name" value="<%= user.getName() %>">
 		<input type="hidden" name="email" value="<%= user.getEmail() %>">
 		<input type="hidden" name="status" value="<%= user.getStatus() %>">
 	</form>
+</div>
 
+	<div class="button">
 	
-	<form name="emailConfirm" action="/hw7/TracksServlet" method="POST">
+	<form name="emailConfirm" action="/registration/TracksServlet" method="POST">
 		<input type="submit" value="Confirm Registration" />
 		<input type="hidden" name="action" value="CONFIRM">
 		<input type="hidden" name="name" value="<%= user.getName() %>">
 		<input type="hidden" name="email" value="<%= user.getEmail() %>">
 		<input type="hidden" name="status" value="<%= user.getStatus() %>">
 	</form>
-		
-
+	</div>
+	</div>
+</div>
 </body>
 </html>

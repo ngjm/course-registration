@@ -9,6 +9,7 @@ body {
 
 div#title {
 	text-align: center;
+	padding-bottom: 10px;
 }
 
 fieldset {
@@ -18,5 +19,28 @@ fieldset {
 #submitButton {
 	margin: 0 auto 0 auto;
 	text-align: center;
+}
+
+#summary {
+	font-size:10px;
+}
+td#totalLabel, #totalAmount{
+	font-size: 12px;
+	font-weight: bold; 
+	padding-top: 10px;
+}
+.submitButtons {
+	margin: 0 auto 0 auto;
+	text-align: center;
+	padding-top: 15px;
+}
+
+.button {
+	display:inline-block;
+}
+
+fieldset#paymentDetails {
+	margin-top: 25px;
+	margin-bottom: 25px;
 }
 

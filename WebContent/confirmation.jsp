@@ -3,16 +3,18 @@
 <%@page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>HW 7</title>
-</head>
+	<head>
+		<title>Review Selections</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	</head>
 <body>
 	<%@ page import="ng.jessica.hw7.User"%>
 	<%@ page import="java.util.ArrayList"%>
 
-	<h1>JOHNS HOPKINS ANNUAL SOFTWARE DEVELOPMENT SEMINAR</h1>
-	<br />
+
+<div class="formBody">
+	<div id="title"><h2>ANNUAL SOFTWARE DEVELOPMENT SEMINAR</h2></div>
 
 	<%
 		User user = (User) session.getAttribute("user");
@@ -55,8 +57,8 @@
 	<br /> Your confirmation will be sent to:
 	<font style="font-weight: bold"><%=user.getEmail()%></font>
 	<br />
-	<br /> If you do not receive the e-mail confirmation or if you need to update your registration informaiton, 
-	please contact the conference committee at <a href="registration@seminar.jhu.edu">registration@seminar.jhu.edu</a>
+	<br /> If you do not receive an e-mail confirmation or if you need to update your registration information, 
+	please contact the conference committee at <a href="mailto:">registration@university.edu</a>
 	or at (410) 410-4100.
 
 	<%
@@ -76,7 +78,7 @@
 	<br />
 	<br />
 
-	<table colspan="3" border="0" width="70%">
+	<table colspan="3" border="0" width="85%">
 
 		<tr>
 			<td align="center"><font style="font-weight: bold">Your
@@ -138,6 +140,6 @@
 		</tr>
 	</table>
 	
-
+</div>
 </body>
 </html>

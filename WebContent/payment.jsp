@@ -3,16 +3,17 @@
 <%@page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>HW 7</title>
-</head>
+	<head>
+		<title>Payment Information</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	</head>
 <body>
 	<%@ page import="ng.jessica.hw7.User"%>
 	<%@ page import="java.util.ArrayList"%>
-
-	<h1>JOHNS HOPKINS ANNUAL SOFTWARE DEVELOPMENT SEMINAR</h1>
-	<br />
+	
+<div class="formBody">
+	<div id="title"><h2>ANNUAL SOFTWARE DEVELOPMENT SEMINAR</h2></div>
 
 	<%
 		User user = (User) session.getAttribute("user");
@@ -79,7 +80,7 @@
 
 	<br />
 
-	<fieldset>
+	<fieldset id="paymentDetails">
 		<legend>Payment Details</legend>
 
 		<table>
@@ -101,24 +102,34 @@
 		</table>
 	</fieldset>
 
-	<input type="button" value="Edit Information" />
+	<div class="submitButtons">
 	
-	<form name="addCourses" action="/hw7/TracksServlet" method="POST">
+	<div class="button">
+		<input type="button" value="Edit Information" />
+	</div>
+	
+	<div class="button">
+	<form name="addCourses" action="/registration/TracksServlet" method="POST">
 		<input type="submit" value="Add More Courses" />
 		<input type="hidden" name="action" value="ADD">
 		<input type="hidden" name="name" value="<%= user.getName() %>">
 		<input type="hidden" name="email" value="<%= user.getEmail() %>">
 		<input type="hidden" name="status" value="<%= user.getStatus() %>">
 	</form>
+	</div>
 
-	
-	<form name="emailConfirm" action="/hw7/TracksServlet" method="POST">
+	<div class="button">
+	<form name="emailConfirm" action="/registration/TracksServlet" method="POST">
 		<input type="submit" value="Confirm Registration" />
 		<input type="hidden" name="action" value="EMAIL">
 		<input type="hidden" name="name" value="<%= user.getName() %>">
 		<input type="hidden" name="email" value="<%= user.getEmail() %>">
 		<input type="hidden" name="status" value="<%= user.getStatus() %>">
 	</form>
-
+	</div>
+	
+	</div>
+	
+</div>
 </body>
 </html>

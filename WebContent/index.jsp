@@ -12,7 +12,6 @@
 	<%@ page import="java.util.ArrayList"%>
 <div class="formBody">
 	<div id="title"><h2>ANNUAL SOFTWARE DEVELOPMENT SEMINAR</h2></div>
-	<br />
 
 	<%
 		User user = (User) session.getAttribute("user");
@@ -35,7 +34,7 @@
 		if (msgStatus == null)
 			msgStatus = "";
 		
-		if (msgName != null || msgEmail != null || msgCourses != null || msgStatus != null) {
+		if (msgName.length() > 0  || msgEmail.length() > 0|| msgCourses.length() > 0 || msgStatus.length() > 0) {
 			user = new User();
 		}
 	%>
@@ -106,7 +105,7 @@
 		Permit
 	</fieldset>
 	
-	<div id="submitButton">
+	<div class="submitButtons">
 		<input type="submit" value="Compute Seminar Costs" />
 	</div>
 	</form>

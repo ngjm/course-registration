@@ -68,7 +68,6 @@ public class TracksServlet extends HttpServlet {
 				}
 			}
 			status = request.getParameter("status");
-			System.out.println("status gotten is " + status);
 			hotel = request.getParameter("hotel");
 			parking = request.getParameter("parking");
 
@@ -87,8 +86,7 @@ public class TracksServlet extends HttpServlet {
 				}
 			}
 
-			selectedCourses = (ArrayList<String>) session
-					.getAttribute("courses");
+			selectedCourses = (ArrayList<String>) session.getAttribute("courses");
 			updatedCourseSelection.addAll(selectedCourses);
 
 			duplicates = findDuplicates(updatedCourseSelection);
@@ -103,10 +101,11 @@ public class TracksServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		String indexToRemove = request.getParameter("indexToRemove");
 		if (action != null && action.equals("DELETE")) {
-			selectedCourses = (ArrayList<String>) session
-					.getAttribute("courses");
-			selectedCourses.remove(Integer.parseInt(indexToRemove));
-			user.setCourses((ArrayList<String>) selectedCourses);
+			selectedCourses = (ArrayList<String>) session.getAttribute("courses");
+			if (!selectedCourses.isEmpty()) {
+				selectedCourses.remove(Integer.parseInt(indexToRemove));
+				user.setCourses((ArrayList<String>) selectedCourses);
+			}
 		}
 
 		if (user != null && user.getName().length() < 1) {
@@ -117,7 +116,7 @@ public class TracksServlet extends HttpServlet {
 			errorMsgEmail = "Please enter your e-mail.";
 			error = true;
 		}
-		if (user != null && user.getCourses() == null) {
+		if (user != null && user.getCourses() == null || user.getCourses().size() < 1) {
 			errorMsgCourses = "Please select 1 or more courses.";
 			error = true;
 		}
@@ -139,44 +138,6 @@ public class TracksServlet extends HttpServlet {
 		} else if (action != null && action.equals("CONFIRM")) {
 			url = "/payment.jsp";
 		} else if (action != null && action.equals("EMAIL")) {
-			/*
-			 * int courseCost = 0; int total = 0; int hotelFee = 185; int
-			 * parkingFee = 10;
-			 * 
-			 * if (user.getStatus() != null) { if
-			 * (user.getStatus().equals("JHU Employee")) { courseCost = 850; }
-			 * else if (user.getStatus().equals("JHU Student")) { courseCost =
-			 * 1000; } else if (user.getStatus().equals("Speaker")) { courseCost
-			 * = 0; } else { courseCost = 1350; } }
-			 * 
-			 * String to = user.getEmail(); String from = "noreply@jhu.edu";
-			 * String subject =
-			 * "Annual JHU Software Development Seminar Registration Confirmation"
-			 * ; String body = user.getName() + ", <br />" +
-			 * "Thank you for registering your participation in the Annual Johns Hopkins "
-			 * +
-			 * "Software Development Seminar. Below is your registration information: <br /> <table>"
-			 * ; int numOfCourses = user.getCourses().size(); for (int i = 0; i
-			 * < numOfCourses; i++) { body += "<tr><td>" +
-			 * user.getCourses().get(i) + "</td><td>$" + courseCost +
-			 * ".00</td></tr>"; } total = numOfCourses * courseCost; if
-			 * (user.getHotel() != null) { body +=
-			 * "<tr><td>Hotel Accommodation</td><td>$" + hotelFee +
-			 * ".00</td></tr>"; total += hotelFee; }
-			 * 
-			 * if (user.getParking() != null) { body +=
-			 * "<tr><td>Parking Permit</td><td>$" + parkingFee +
-			 * ".00</td></tr>"; total += parkingFee; } body +=
-			 * "<tr><td align=right>Total</td><td>" + total +
-			 * ".00</td></tr></table><br />"; body += "Thank you."; boolean
-			 * isBodyHTML = true;
-			 * 
-			 * try { MailUtilLocal.sendMail(to, from, subject, body,
-			 * isBodyHTML); } catch (MessagingException e) { errorMsgSendEmail =
-			 * "Unable to send confirmation e-mail at this time. Please try again later."
-			 * ; }
-			 */
-			
 			url = "/confirmation.jsp";
 		} else if (action != null && action.equals("DELETE")) {
 			url = "/results.jsp";

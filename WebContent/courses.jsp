@@ -2,17 +2,18 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<title>HW 7</title>
-
-</head>
+	<head>
+		<title>Course Selection</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	</head>
 
 <body>
 	<%@ page import="ng.jessica.hw7.User"%>
 	<%@ page import="java.util.ArrayList"%>
-
-	<h1>JOHNS HOPKINS ANNUAL SOFTWARE DEVELOPMENT SEMINAR</h1>
-	<br />
+	
+	
+<div class="formBody">
+	<div id="title"><h2>ANNUAL SOFTWARE DEVELOPMENT SEMINAR</h2></div>
 
 	<%
 		User user = (User) session.getAttribute("user");
@@ -37,7 +38,7 @@
 			msgDuplicateCourse = "";
 	%>
 
-	<form name="reservationForm" action="/hw7/TracksServlet" method="get">
+	<form name="reservationForm" action="/registration/TracksServlet" method="get">
 
 		<h3>Select Your Courses</h3>
 
@@ -64,6 +65,7 @@
 
 		<br /> <input type="submit" value="Compute Seminar Costs" />
 	</form>
+	</div>
 </body>
 
 </html>
