@@ -12,7 +12,7 @@
   <servlet>
     <description></description>
     <servlet-name>TracksServlet</servlet-name>
-    <servlet-class>ng.jessica.hw7.TracksServlet</servlet-class>
+    <servlet-class>ng.jessica.register.TracksServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>TracksServlet</servlet-name>

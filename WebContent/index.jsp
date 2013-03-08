@@ -8,7 +8,7 @@
 	</head>
 
 <body>
-	<%@ page import="ng.jessica.hw7.User"%>
+	<%@ page import="ng.jessica.register.User"%>
 	<%@ page import="java.util.ArrayList"%>
 <div class="formBody">
 	<div id="title"><h2>ANNUAL SOFTWARE DEVELOPMENT SEMINAR</h2></div>

@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 	</head>
 <body>
-	<%@ page import="ng.jessica.hw7.User"%>
+	<%@ page import="ng.jessica.register.User"%>
 	<%@ page import="java.util.ArrayList"%>
 
 
